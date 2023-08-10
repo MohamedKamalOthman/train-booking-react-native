@@ -6,14 +6,9 @@
  */
 
 import React, {useLayoutEffect} from 'react';
-import {SafeAreaView, ScrollView, StatusBar, Text, View} from 'react-native';
-
 import SplashScreen from 'react-native-splash-screen';
-
+import {Breadcrumb} from './app/components';
 function App(): JSX.Element {
-  console.log('showing splash screen');
-  SplashScreen.show();
-
   // hide when mounted and ready
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -21,16 +16,7 @@ function App(): JSX.Element {
       SplashScreen.hide();
     }, 500);
   }, []);
-  return (
-    <SafeAreaView>
-      <StatusBar />
-      <ScrollView>
-        <View>
-          <Text>Welcome to React Native!</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  return <Breadcrumb index={1} />;
 }
 
 export default App;
