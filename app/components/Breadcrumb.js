@@ -3,7 +3,7 @@ import {ImageBackground, Text, View} from 'react-native';
 
 export const Breadcrumb = ({index}) => {
   return (
-    <View style={{}}>
+    <View>
       <ImageBackground
         source={require('../assets/images/bg.jpg')}
         resizeMode="cover"
