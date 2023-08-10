@@ -1,33 +1,36 @@
 import React from 'react';
 import {ImageBackground, Text, View} from 'react-native';
 
-export const Breadcrumb = ({index}) => {
+export const Breadcrumb = ({index, title}) => {
   return (
     <View>
       <ImageBackground
         source={require('../assets/images/bg.jpg')}
         resizeMode="cover"
         imageStyle={styles.bgImage}>
-        <View style={styles.container}>
-          <Text style={[styles.text, index === 1 && styles.highlighted]}>
-            1
-          </Text>
-          <View style={styles.line} />
-          <Text style={[styles.text, index === 2 && styles.highlighted]}>
-            2
-          </Text>
-          <View style={styles.line} />
-          <Text style={[styles.text, index === 3 && styles.highlighted]}>
-            3
-          </Text>
-          <View style={styles.line} />
-          <Text style={[styles.text, index === 4 && styles.highlighted]}>
-            4
-          </Text>
-          <View style={styles.line} />
-          <Text style={[styles.text, index === 5 && styles.highlighted]}>
-            5
-          </Text>
+        <View style={styles.outerContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.container}>
+            <Text style={[styles.text, index === 1 && styles.highlighted]}>
+              1
+            </Text>
+            <View style={styles.line} />
+            <Text style={[styles.text, index === 2 && styles.highlighted]}>
+              2
+            </Text>
+            <View style={styles.line} />
+            <Text style={[styles.text, index === 3 && styles.highlighted]}>
+              3
+            </Text>
+            <View style={styles.line} />
+            <Text style={[styles.text, index === 4 && styles.highlighted]}>
+              4
+            </Text>
+            <View style={styles.line} />
+            <Text style={[styles.text, index === 5 && styles.highlighted]}>
+              5
+            </Text>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -39,10 +42,20 @@ const styles = {
     margin: 10,
     alignItems: 'center',
     borderRadius: 10,
-    shadowColor: '#000',
-    height: 150,
     flexDirection: 'row-reverse',
     justifyContent: 'center',
+  },
+  outerContainer: {
+    justifyContent: 'center',
+    borderRadius: 10,
+    height: 150,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    padding: 10,
+    fontWeight: 'bold',
   },
   text: {
     fontSize: 18,

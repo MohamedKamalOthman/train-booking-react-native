@@ -49,10 +49,6 @@ function Tabs({setIndex, index}) {
           height: 0, // Remove Tab Bar
         },
       }}
-      tabBarComponent={({navigation}) => {
-        console.log('tabBarComponent');
-        return;
-      }}
       initialRouteName="Home">
       <Tab.Screen
         name="Screen5"

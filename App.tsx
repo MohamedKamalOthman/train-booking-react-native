@@ -22,7 +22,7 @@ function App(): JSX.Element {
   }, []);
   return (
     <NavigationContainer>
-      <Breadcrumb index={index} />
+      <Breadcrumb index={index} title={'قطار الذهاب'} />
       <Tabs setIndex={setIndex} index={index} />
     </NavigationContainer>
   );
