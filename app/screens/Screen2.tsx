@@ -27,13 +27,14 @@ export const Screen2 = () => {
   const [seats, setSeats] = React.useState(seats_);
 
   const selectSeat = (id: number) => {
-    const seatIndex = seats.findIndex(seat => seat.id === id);
-    const newSeats = [...seats];
-    newSeats[seatIndex] = {
-      ...newSeats[seatIndex],
-      isSelected: !newSeats[seatIndex].isSelected,
-    };
-    setSeats(newSeats);
+    // const seatIndex = seats.findIndex(seat => seat.id === id);
+    const seatIndex = id - 1;
+    // const newSeats = [...seats];
+    setSeats((prevSeats: any[]) => {
+      const newSeats = [...prevSeats];
+      newSeats[seatIndex].isSelected = !newSeats[seatIndex].isSelected;
+      return newSeats;
+    });
   };
 
   const renderSeats = () => {
@@ -55,7 +56,7 @@ export const Screen2 = () => {
           <View style={styles.row}>
             {seats.slice(i - 1, i + 1).map(seat => (
               <TouchableOpacity
-                disabled={seat.isReserved || seat.isSelected}
+                disabled={seat.isReserved}
                 key={seat.id.toString() + Math.random()}
                 onPress={() => selectSeat(seat.id)}>
                 <View
@@ -79,7 +80,7 @@ export const Screen2 = () => {
           <View style={styles.row}>
             {seats.slice(i + 1, i + 3).map(seat => (
               <TouchableOpacity
-                disabled={seat.isReserved || seat.isSelected}
+                disabled={seat.isReserved}
                 key={seat.id.toString() + Math.random()}
                 onPress={() => selectSeat(seat.id)}>
                 <View
