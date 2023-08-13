@@ -1,15 +1,8 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
 import {Text, View} from 'react-native';
+import {Screen1} from '../screens';
 const Tab = createMaterialTopTabNavigator();
-
-const HomeScreen = ({route}) => {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  );
-};
 
 const SettingsScreen = ({route}) => {
   return (
@@ -41,7 +34,7 @@ const Screen5 = ({route}) => {
   );
 };
 
-function Tabs({setIndex, index}) {
+function Tabs({setIndex, index, setNav}) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -49,11 +42,12 @@ function Tabs({setIndex, index}) {
           height: 0, // Remove Tab Bar
         },
       }}
-      initialRouteName="Home">
+      initialRouteName="Screen1">
       <Tab.Screen
         name="Screen5"
         component={Screen5}
         listeners={({navigation, route}) => {
+          setNav(navigation);
           setIndex(5);
           return;
         }}
@@ -62,6 +56,7 @@ function Tabs({setIndex, index}) {
         name="Screen4"
         component={Screen4}
         listeners={({navigation, route}) => {
+          setNav(navigation);
           setIndex(4);
           return;
         }}
@@ -70,22 +65,25 @@ function Tabs({setIndex, index}) {
         name="Screen3"
         component={Screen3}
         listeners={({navigation, route}) => {
+          setNav(navigation);
           setIndex(3);
           return;
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name="Screen2"
         component={SettingsScreen}
         listeners={({navigation, route}) => {
+          setNav(navigation);
           setIndex(2);
           return;
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Screen1"
+        component={Screen1}
         listeners={({navigation, route}) => {
+          setNav(navigation);
           setIndex(1);
           return;
         }}

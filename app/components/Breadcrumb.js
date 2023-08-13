@@ -1,7 +1,7 @@
 import React from 'react';
-import {ImageBackground, Text, View} from 'react-native';
+import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 
-export const Breadcrumb = ({index, title}) => {
+export const Breadcrumb = ({index, nav}) => {
   return (
     <View>
       <ImageBackground
@@ -9,27 +9,37 @@ export const Breadcrumb = ({index, title}) => {
         resizeMode="cover"
         imageStyle={styles.bgImage}>
         <View style={styles.outerContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title}>{titles[index - 1]}</Text>
           <View style={styles.container}>
-            <Text style={[styles.text, index === 1 && styles.highlighted]}>
-              1
-            </Text>
+            <TouchableOpacity onPress={() => nav.navigate('Screen1')}>
+              <Text style={[styles.text, index === 1 && styles.highlighted]}>
+                1
+              </Text>
+            </TouchableOpacity>
             <View style={styles.line} />
-            <Text style={[styles.text, index === 2 && styles.highlighted]}>
-              2
-            </Text>
+            <TouchableOpacity onPress={() => nav.navigate('Screen2')}>
+              <Text style={[styles.text, index === 2 && styles.highlighted]}>
+                2
+              </Text>
+            </TouchableOpacity>
             <View style={styles.line} />
-            <Text style={[styles.text, index === 3 && styles.highlighted]}>
-              3
-            </Text>
+            <TouchableOpacity onPress={() => nav.navigate('Screen3')}>
+              <Text style={[styles.text, index === 3 && styles.highlighted]}>
+                3
+              </Text>
+            </TouchableOpacity>
             <View style={styles.line} />
-            <Text style={[styles.text, index === 4 && styles.highlighted]}>
-              4
-            </Text>
+            <TouchableOpacity onPress={() => nav.navigate('Screen4')}>
+              <Text style={[styles.text, index === 4 && styles.highlighted]}>
+                4
+              </Text>
+            </TouchableOpacity>
             <View style={styles.line} />
-            <Text style={[styles.text, index === 5 && styles.highlighted]}>
-              5
-            </Text>
+            <TouchableOpacity onPress={() => nav.navigate('Screen5')}>
+              <Text style={[styles.text, index === 5 && styles.highlighted]}>
+                5
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>
@@ -79,3 +89,11 @@ const styles = {
     backgroundColor: '#fff',
   },
 };
+
+const titles = [
+  'قطار الذهاب',
+  'تفاصيل الركاب',
+  'قطار العودة',
+  'تفاصيل الدفع',
+  'مراجعة الطلب',
+];

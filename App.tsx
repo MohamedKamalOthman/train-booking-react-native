@@ -12,7 +12,7 @@ import {Breadcrumb} from './app/components';
 import Tabs from './app/navigation/BreadCrumbTopBar';
 function App(): JSX.Element {
   const [index, setIndex] = React.useState(1);
-
+  const [nav, setNav] = React.useState(null);
   // hide when mounted and ready
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -22,8 +22,8 @@ function App(): JSX.Element {
   }, []);
   return (
     <NavigationContainer>
-      <Breadcrumb index={index} title={'قطار الذهاب'} />
-      <Tabs setIndex={setIndex} index={index} />
+      <Breadcrumb index={index} nav={nav} />
+      <Tabs setIndex={setIndex} index={index} setNav={setNav} />
     </NavigationContainer>
   );
 }
