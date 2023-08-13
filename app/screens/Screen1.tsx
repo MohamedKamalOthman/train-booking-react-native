@@ -1,9 +1,74 @@
+/* eslint-disable react-native/no-inline-styles */
 // قطار الذهاب
 import React from 'react';
 
-import {Image, StyleSheet, Text, View} from 'react-native';
-
-export const Screen1 = ({navigation}: any) => {
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+const CardTrain = () => {
+  return (
+    <View
+      style={{
+        borderRadius: 10,
+        borderColor: 'grey',
+        backgroundColor: 'white',
+        elevation: 10,
+        alignSelf: 'center',
+        marginHorizontal: 10,
+        width: '80%',
+      }}>
+      <View>
+        <Text />
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+        }}>
+        <TouchableOpacity
+          style={{
+            width: '50%',
+            backgroundColor: '#e7f3f7',
+            borderBottomLeftRadius: 10,
+            borderTopColor: '#00798c',
+            borderTopWidth: 1,
+          }}>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: '#00798c',
+              fontSize: 12,
+              padding: 10,
+              fontWeight: 'bold',
+              textAlignVertical: 'center',
+            }}>
+            اعمال
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            width: '50%',
+            backgroundColor: '#00798c',
+            borderBottomRightRadius: 10,
+            borderColor: '#00798c',
+            borderLeftWidth: 1,
+            borderTopWidth: 1,
+          }}>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: '#e7f3f7',
+              fontSize: 12,
+              padding: 10,
+              fontWeight: 'bold',
+              textAlignVertical: 'center',
+            }}>
+            اقتصادي
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+export const Screen1 = () => {
   return (
     <>
       <View style={styles.container}>
@@ -22,6 +87,7 @@ export const Screen1 = ({navigation}: any) => {
           </Text>
         </View>
         <View />
+        <CardTrain />
       </View>
     </>
   );
@@ -29,15 +95,14 @@ export const Screen1 = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: 'white',
+    alignItems: 'flex-start',
   },
   detailsContainer: {
-    flex: 1,
     justifyContent: 'center',
     flexDirection: 'row',
+    width: '100%',
     alignItems: 'center',
-    position: 'absolute',
   },
   cityText: {
     fontSize: 20,
