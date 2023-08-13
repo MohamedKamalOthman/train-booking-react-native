@@ -79,7 +79,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#fff',
-    textVerticalAlign: 'center',
+    textAlignVertical: 'center',
   },
   highlighted: {backgroundColor: '#00758c', color: '#fff'},
   bgImage: {borderBottomLeftRadius: 50},
