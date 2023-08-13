@@ -12,31 +12,31 @@ export const Breadcrumb = ({index, nav}) => {
           <Text style={styles.title}>{titles[index - 1]}</Text>
           <View style={styles.container}>
             <TouchableOpacity onPress={() => nav.navigate('Screen1')}>
-              <Text style={[styles.text, index === 1 && styles.highlighted]}>
+              <Text style={[styles.text, index >= 1 && styles.highlighted]}>
                 1
               </Text>
             </TouchableOpacity>
             <View style={styles.line} />
             <TouchableOpacity onPress={() => nav.navigate('Screen2')}>
-              <Text style={[styles.text, index === 2 && styles.highlighted]}>
+              <Text style={[styles.text, index >= 2 && styles.highlighted]}>
                 2
               </Text>
             </TouchableOpacity>
             <View style={styles.line} />
             <TouchableOpacity onPress={() => nav.navigate('Screen3')}>
-              <Text style={[styles.text, index === 3 && styles.highlighted]}>
+              <Text style={[styles.text, index >= 3 && styles.highlighted]}>
                 3
               </Text>
             </TouchableOpacity>
             <View style={styles.line} />
             <TouchableOpacity onPress={() => nav.navigate('Screen4')}>
-              <Text style={[styles.text, index === 4 && styles.highlighted]}>
+              <Text style={[styles.text, index >= 4 && styles.highlighted]}>
                 4
               </Text>
             </TouchableOpacity>
             <View style={styles.line} />
             <TouchableOpacity onPress={() => nav.navigate('Screen5')}>
-              <Text style={[styles.text, index === 5 && styles.highlighted]}>
+              <Text style={[styles.text, index >= 5 && styles.highlighted]}>
                 5
               </Text>
             </TouchableOpacity>
@@ -76,10 +76,10 @@ const styles = {
     borderRadius: 20,
     color: '#00758c',
     borderWidth: 1,
-    padding: 5,
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#fff',
+    textVerticalAlign: 'center',
   },
   highlighted: {backgroundColor: '#00758c', color: '#fff'},
   bgImage: {borderBottomLeftRadius: 50},
