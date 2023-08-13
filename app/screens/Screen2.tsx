@@ -1,7 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
-// قطار الذهاب
 import React from 'react';
-
 import {
   ScrollView,
   StyleSheet,
@@ -12,13 +9,7 @@ import {
 
 const numberOfSeats = 102; // Change this to the number of seats you want
 
-const seats_: {
-  id: number;
-  key: number;
-  seatNumber: string;
-  isSelected: boolean;
-  isReserved: boolean;
-}[] = [];
+const seats_: any[] | (() => any[]) = [];
 
 for (let i = 1; i <= numberOfSeats; i++) {
   const seat = {
@@ -34,6 +25,7 @@ for (let i = 1; i <= numberOfSeats; i++) {
 
 export const Screen2 = () => {
   const [seats, setSeats] = React.useState(seats_);
+
   const selectSeat = (id: number) => {
     const seatIndex = seats.findIndex(seat => seat.id === id);
     const newSeats = [...seats];
@@ -43,6 +35,7 @@ export const Screen2 = () => {
     };
     setSeats(newSeats);
   };
+
   const renderSeats = () => {
     const jsx = [];
 
@@ -50,117 +43,62 @@ export const Screen2 = () => {
       // only push every 8 seats
       if ((i - 1) % 8 === 0 && i !== 1) {
         jsx.push(
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-              marginVertical: 10,
-            }}>
-            <View
-              style={{
-                width: 100,
-                height: 50,
-                backgroundColor: '#00798c',
-                borderTopEndRadius: 30,
-                borderBottomEndRadius: 30,
-              }}
-            />
-            <View
-              style={{
-                width: 100,
-                height: 50,
-                borderTopLeftRadius: 30,
-                borderBottomLeftRadius: 30,
-                backgroundColor: '#00798c',
-              }}
-            />
+          <View key={i.toString() + Math.random()} style={styles.rowContainer}>
+            <View style={[styles.rowSection, styles.leftSeatRow]} />
+            <View style={[styles.rowSection, styles.rightSeatRow]} />
           </View>,
         );
       }
 
       jsx.push(
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            {seats.slice(i - 1, i + 1).map(seat => {
-              return (
-                <TouchableOpacity onPress={() => selectSeat(seat.id)}>
-                  <View
-                    key={seat.id.toString() + Math.random()}
+        <View key={i.toString() + Math.random()} style={styles.rowContainer}>
+          <View style={styles.row}>
+            {seats.slice(i - 1, i + 1).map(seat => (
+              <TouchableOpacity
+                disabled={seat.isReserved || seat.isSelected}
+                key={seat.id.toString() + Math.random()}
+                onPress={() => selectSeat(seat.id)}>
+                <View
+                  style={[
+                    styles.seat,
+                    seat.isReserved && styles.seatReserved,
+                    seat.isSelected && styles.seatSelected,
+                  ]}>
+                  <Text
                     style={[
-                      {
-                        borderColor: '#00798c',
-                        borderWidth: 2,
-                        padding: 5,
-                        margin: 5,
-                        borderRadius: 5,
-                      },
-                      seat.isReserved && styles.seatReserved,
-                      seat.isSelected && styles.seatSelected,
+                      styles.seatText,
+                      seat.isReserved && styles.seatReservedText,
+                      seat.isSelected && styles.seatSelectedText,
                     ]}>
-                    <Text
-                      style={[
-                        {
-                          fontWeight: 'bold',
-                          textAlign: 'center',
-                          textAlignVertical: 'center',
-                          fontSize: 20,
-                          width: 50,
-                          height: 50,
-                          color: '#00798c',
-                        },
-                        seat.isReserved && styles.seatReservedText,
-                        seat.isSelected && styles.seatSelectedText,
-                      ]}>
-                      {seat.seatNumber}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+                    {seat.seatNumber}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            ))}
           </View>
-          <View style={{flexDirection: 'row'}}>
-            {seats.slice(i + 1, i + 3).map(seat => {
-              return (
-                <TouchableOpacity onPress={() => selectSeat(seat.id)}>
-                  <View
-                    key={seat.id.toString() + Math.random()}
+          <View style={styles.row}>
+            {seats.slice(i + 1, i + 3).map(seat => (
+              <TouchableOpacity
+                disabled={seat.isReserved || seat.isSelected}
+                key={seat.id.toString() + Math.random()}
+                onPress={() => selectSeat(seat.id)}>
+                <View
+                  style={[
+                    styles.seat,
+                    seat.isReserved && styles.seatReserved,
+                    seat.isSelected && styles.seatSelected,
+                  ]}>
+                  <Text
                     style={[
-                      {
-                        borderColor: '#00798c',
-                        borderWidth: 2,
-                        padding: 5,
-                        margin: 5,
-                        borderRadius: 5,
-                      },
-                      seat.isReserved && styles.seatReserved,
-                      seat.isSelected && styles.seatSelected,
+                      styles.seatText,
+                      seat.isReserved && styles.seatReservedText,
+                      seat.isSelected && styles.seatSelectedText,
                     ]}>
-                    <Text
-                      style={[
-                        {
-                          fontWeight: 'bold',
-                          textAlign: 'center',
-                          textAlignVertical: 'center',
-                          fontSize: 20,
-                          width: 50,
-                          height: 50,
-                          color: '#00798c',
-                        },
-                        seat.isReserved && styles.seatReservedText,
-                        seat.isSelected && styles.seatSelectedText,
-                      ]}>
-                      {seat.seatNumber}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+                    {seat.seatNumber}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            ))}
           </View>
         </View>,
       );
@@ -168,13 +106,18 @@ export const Screen2 = () => {
 
     return jsx;
   };
+
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>{renderSeats()}</View>
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'white',
+  },
   container: {
     alignItems: 'center',
     backgroundColor: '#e7f7ff',
@@ -182,27 +125,43 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
   },
-  detailsContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  rowContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    position: 'absolute',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginVertical: 10,
   },
-  cityText: {
-    fontSize: 20,
+  rowSection: {
+    width: 100,
+    height: 50,
+    backgroundColor: '#00798c',
+  },
+  leftSeatRow: {
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  rightSeatRow: {
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  seat: {
+    borderColor: '#00798c',
+    borderWidth: 2,
+    padding: 5,
+    margin: 5,
+    borderRadius: 5,
+  },
+  seatText: {
     fontWeight: 'bold',
-    color: 'grey',
     textAlign: 'center',
-    marginHorizontal: 5,
-  },
-  cityText2: {
-    fontSize: 16,
-    fontWeight: 'normal',
-  },
-  image: {
-    width: 200,
-    resizeMode: 'contain',
+    textAlignVertical: 'center',
+    fontSize: 20,
+    width: 50,
+    height: 50,
+    color: '#00798c',
   },
   seatReserved: {
     backgroundColor: '#b5d7de',
@@ -210,6 +169,8 @@ const styles = StyleSheet.create({
   },
   seatReservedText: {
     color: '#00798c',
+    width: 54,
+    height: 54,
   },
   seatSelected: {
     backgroundColor: '#00798c',
@@ -217,5 +178,7 @@ const styles = StyleSheet.create({
   },
   seatSelectedText: {
     color: 'white',
+    width: 54,
+    height: 54,
   },
 });
