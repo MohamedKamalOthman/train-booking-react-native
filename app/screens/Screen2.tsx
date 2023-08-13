@@ -91,7 +91,7 @@ export const Screen2 = () => {
               return (
                 <TouchableOpacity onPress={() => selectSeat(seat.id)}>
                   <View
-                    key={seat.id}
+                    key={seat.id.toString() + Math.random()}
                     style={[
                       {
                         borderColor: '#00798c',
@@ -129,7 +129,7 @@ export const Screen2 = () => {
               return (
                 <TouchableOpacity onPress={() => selectSeat(seat.id)}>
                   <View
-                    key={seat.id.toString()}
+                    key={seat.id.toString() + Math.random()}
                     style={[
                       {
                         borderColor: '#00798c',
