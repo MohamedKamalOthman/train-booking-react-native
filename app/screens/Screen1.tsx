@@ -1,76 +1,12 @@
-/* eslint-disable react-native/no-inline-styles */
 // قطار الذهاب
 import React from 'react';
 
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-const CardTrain = () => {
-  return (
-    <View
-      style={{
-        borderRadius: 10,
-        borderColor: 'grey',
-        backgroundColor: 'white',
-        elevation: 10,
-        alignSelf: 'center',
-        marginHorizontal: 10,
-        width: '80%',
-      }}>
-      <View>
-        <Text />
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-        }}>
-        <TouchableOpacity
-          style={{
-            width: '50%',
-            backgroundColor: '#e7f3f7',
-            borderBottomLeftRadius: 10,
-            borderTopColor: '#00798c',
-            borderTopWidth: 1,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#00798c',
-              fontSize: 12,
-              padding: 10,
-              fontWeight: 'bold',
-              textAlignVertical: 'center',
-            }}>
-            اعمال
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: '50%',
-            backgroundColor: '#00798c',
-            borderBottomRightRadius: 10,
-            borderColor: '#00798c',
-            borderLeftWidth: 1,
-            borderTopWidth: 1,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#e7f3f7',
-              fontSize: 12,
-              padding: 10,
-              fontWeight: 'bold',
-              textAlignVertical: 'center',
-            }}>
-            اقتصادي
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {CardTrain} from '../components';
+
 export const Screen1 = () => {
   return (
-    <>
+    <ScrollView style={{backgroundColor: 'white'}}>
       <View style={styles.container}>
         <View style={styles.detailsContainer}>
           <Text style={styles.cityText}>
@@ -88,8 +24,12 @@ export const Screen1 = () => {
         </View>
         <View />
         <CardTrain />
+        <CardTrain />
+        <CardTrain />
+        <CardTrain />
+        <CardTrain />
       </View>
-    </>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
