@@ -1,3 +1,3 @@
+import {BottomBar} from './BottomBar';
 import {Breadcrumb} from './Breadcrumb';
-
-export {Breadcrumb};
+export {BottomBar, Breadcrumb};

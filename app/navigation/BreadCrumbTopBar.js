@@ -1,38 +1,8 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
-import {Text, View} from 'react-native';
-import {Screen1} from '../screens';
+import {Screen1, Screen2, Screen3, Screen4, Screen5} from '../screens';
+
 const Tab = createMaterialTopTabNavigator();
-
-const SettingsScreen = ({route}) => {
-  return (
-    <View>
-      <Text>Second</Text>
-    </View>
-  );
-};
-
-const Screen3 = ({route}) => {
-  return (
-    <View>
-      <Text>Third</Text>
-    </View>
-  );
-};
-const Screen4 = ({route}) => {
-  return (
-    <View>
-      <Text>Fourth</Text>
-    </View>
-  );
-};
-const Screen5 = ({route}) => {
-  return (
-    <View>
-      <Text>Fifth</Text>
-    </View>
-  );
-};
 
 function Tabs({setIndex, index, setNav}) {
   return (
@@ -72,7 +42,7 @@ function Tabs({setIndex, index, setNav}) {
       />
       <Tab.Screen
         name="Screen2"
-        component={SettingsScreen}
+        component={Screen2}
         listeners={({navigation, route}) => {
           setNav(navigation);
           setIndex(2);
