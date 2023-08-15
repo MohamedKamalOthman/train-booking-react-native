@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     borderColor: '#00798c',
   },
   fromToText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#00798c',
     textAlign: 'center',
