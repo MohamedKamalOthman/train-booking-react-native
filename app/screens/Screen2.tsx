@@ -1,183 +1,62 @@
+// قطار الذهاب
 import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 
-const numberOfSeats = 102; // Change this to the number of seats you want
-
-const seats_: any[] | (() => any[]) = [];
-
-for (let i = 1; i <= numberOfSeats; i++) {
-  const seat = {
-    id: i,
-    key: i,
-    seatNumber: i.toString(),
-    isSelected: false,
-    isReserved: Math.random() < 0.5, // Generating random reservation status
-  };
-
-  seats_.push(seat);
-}
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {CardTrain} from '../components';
 
 export const Screen2 = () => {
-  const [seats, setSeats] = React.useState(seats_);
-
-  const selectSeat = (id: number) => {
-    const seatIndex = id - 1;
-    setSeats((prevSeats: any[]) => {
-      const newSeats = [...prevSeats];
-      newSeats[seatIndex].isSelected = !newSeats[seatIndex].isSelected;
-      return newSeats;
-    });
-  };
-
-  const renderSeats = () => {
-    const jsx = [];
-
-    for (let i = 1; i <= numberOfSeats; i += 4) {
-      // only push every 8 seats
-      if ((i - 1) % 8 === 0 && i !== 1) {
-        jsx.push(
-          <View key={i.toString() + Math.random()} style={styles.rowContainer}>
-            <View style={[styles.rowSection, styles.leftSeatRow]} />
-            <View style={[styles.rowSection, styles.rightSeatRow]} />
-          </View>,
-        );
-      }
-
-      jsx.push(
-        <View key={i.toString() + Math.random()} style={styles.rowContainer}>
-          <View style={styles.row}>
-            {seats.slice(i - 1, i + 1).map(seat => (
-              <TouchableOpacity
-                disabled={seat.isReserved}
-                key={seat.id.toString() + Math.random()}
-                onPress={() => selectSeat(seat.id)}>
-                <View
-                  style={[
-                    styles.seat,
-                    seat.isReserved && styles.seatReserved,
-                    seat.isSelected && styles.seatSelected,
-                  ]}>
-                  <Text
-                    style={[
-                      styles.seatText,
-                      seat.isReserved && styles.seatReservedText,
-                      seat.isSelected && styles.seatSelectedText,
-                    ]}>
-                    {seat.seatNumber}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-          <View style={styles.row}>
-            {seats.slice(i + 1, i + 3).map(seat => (
-              <TouchableOpacity
-                disabled={seat.isReserved}
-                key={seat.id.toString() + Math.random()}
-                onPress={() => selectSeat(seat.id)}>
-                <View
-                  style={[
-                    styles.seat,
-                    seat.isReserved && styles.seatReserved,
-                    seat.isSelected && styles.seatSelected,
-                  ]}>
-                  <Text
-                    style={[
-                      styles.seatText,
-                      seat.isReserved && styles.seatReservedText,
-                      seat.isSelected && styles.seatSelectedText,
-                    ]}>
-                    {seat.seatNumber}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>,
-      );
-    }
-
-    return jsx;
-  };
-
   return (
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>{renderSeats()}</View>
+    <ScrollView style={{backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.cityText}>
+            DMM{'\n'}
+            <Text style={styles.cityText2}>الدمام</Text>
+          </Text>
+          <Image
+            source={require('../assets/images/train.png')}
+            style={styles.image}
+          />
+          <Text style={styles.cityText}>
+            RYD{'\n'}
+            <Text style={styles.cityText2}>الرياض الشرق</Text>
+          </Text>
+        </View>
+        <View />
+        <CardTrain />
+        <CardTrain />
+        <CardTrain />
+        <CardTrain />
+        <CardTrain />
+      </View>
     </ScrollView>
   );
 };
-
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white',
-  },
   container: {
-    alignItems: 'center',
-    backgroundColor: '#e7f7ff',
-    margin: 20,
-    borderRadius: 10,
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'flex-start',
+  },
+  detailsContainer: {
     justifyContent: 'center',
-  },
-  rowContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     width: '100%',
-    marginVertical: 10,
+    alignItems: 'center',
   },
-  rowSection: {
-    width: 100,
-    height: 50,
-    backgroundColor: '#00798c',
-  },
-  leftSeatRow: {
-    borderTopRightRadius: 30,
-    borderBottomRightRadius: 30,
-  },
-  rightSeatRow: {
-    borderTopLeftRadius: 30,
-    borderBottomLeftRadius: 30,
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  seat: {
-    borderColor: '#00798c',
-    borderWidth: 2,
-    padding: 5,
-    margin: 5,
-    borderRadius: 5,
-  },
-  seatText: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    textAlignVertical: 'center',
+  cityText: {
     fontSize: 20,
-    width: 50,
-    height: 50,
-    color: '#00798c',
+    fontWeight: 'bold',
+    color: 'grey',
+    textAlign: 'center',
+    marginHorizontal: 5,
   },
-  seatReserved: {
-    backgroundColor: '#b5d7de',
-    borderWidth: 0,
+  cityText2: {
+    fontSize: 16,
+    fontWeight: 'normal',
   },
-  seatReservedText: {
-    color: '#00798c',
-    width: 54,
-    height: 54,
-  },
-  seatSelected: {
-    backgroundColor: '#00798c',
-    borderWidth: 0,
-  },
-  seatSelectedText: {
-    color: 'white',
-    width: 54,
-    height: 54,
+  image: {
+    width: 200,
+    resizeMode: 'contain',
   },
 });
