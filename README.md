@@ -1,6 +1,6 @@
 # 🚆 Saudi Arabia Railways - React Native
 
-This is a UI clone of SAR app using react native.
+A React Native app for booking train tickets in Saudi Arabia. It's a UI clone of SAR app on the market. This app was built as a part of a task as an intern at Ejada Systems.
 
 # ⚙️ Installation
 
