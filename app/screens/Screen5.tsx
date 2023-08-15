@@ -1,13 +1,48 @@
 // قطار الذهاب
 import React from 'react';
 
-import {StyleSheet, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-export const Screen5 = ({navigation}: any) => {
+export const Screen5 = () => {
   return (
-    <>
-      <View style={styles.container} />
-    </>
+    <ScrollView style={{backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <View style={styles.flexRow}>
+          <TouchableOpacity style={styles.card}>
+            <Image
+              source={require('../assets/images/sdad.png')}
+              style={styles.image}
+            />
+            <Text style={styles.cardText}>{'فاتورة سداد'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Image
+              source={{
+                uri: 'https://www.freepnglogos.com/uploads/visa-and-mastercard-logo-26.png',
+              }}
+              style={styles.image}
+            />
+            <Text style={styles.cardText}>{'بطاقة إتمان'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card}>
+            <Image
+              source={{
+                uri: 'https://seeklogo.com/images/F/fawry-logo-FD61F19B43-seeklogo.com.png',
+              }}
+              style={styles.image}
+            />
+            <Text style={styles.cardText}>{'فوري'}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -16,26 +51,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  detailsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+  card: {
+    marginTop: 20,
+    width: '40%',
+    height: 150,
+    elevation: 5,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    margin: 10,
     alignItems: 'center',
-    position: 'absolute',
+    justifyContent: 'space-evenly',
   },
-  cityText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'grey',
-    textAlign: 'center',
-    marginHorizontal: 5,
-  },
-  cityText2: {
+  cardText: {
     fontSize: 16,
-    fontWeight: 'normal',
+    color: 'black',
+  },
+  flexRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    width: '100%',
   },
   image: {
-    width: 200,
+    width: '90%',
+    height: 50,
     resizeMode: 'contain',
   },
 });
