@@ -27,9 +27,7 @@ export const Screen2 = () => {
   const [seats, setSeats] = React.useState(seats_);
 
   const selectSeat = (id: number) => {
-    // const seatIndex = seats.findIndex(seat => seat.id === id);
     const seatIndex = id - 1;
-    // const newSeats = [...seats];
     setSeats((prevSeats: any[]) => {
       const newSeats = [...prevSeats];
       newSeats[seatIndex].isSelected = !newSeats[seatIndex].isSelected;

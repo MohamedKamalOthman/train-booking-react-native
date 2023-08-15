@@ -2,7 +2,7 @@ import {faArrowLeft, faListAlt} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
+import {openLink} from '../services/Browser';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#00798c',
@@ -49,7 +49,11 @@ export const BottomBar = ({navigation, next}) => {
           <Text style={styles.buttonText}>التالي</Text>
         </TouchableOpacity>
       )}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          openLink('https://www.sar.com.sa/');
+        }}>
         <Text style={styles.buttonText}>ملخص</Text>
         <FontAwesomeIcon
           icon={faListAlt}
