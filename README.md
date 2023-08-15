@@ -1,19 +1,37 @@
 # 🚆 Saudi Arabia Railways - React Native
+
 This is a UI clone of SAR app using react native.
+
+# ⚙️ Installation
+
+1. Clone the repo
+   ```sh
+    git clone https://github.com/MohamedKamalOthman/train-booking-react-native.git
+   ```
+2. Install NPM packages
+   ```sh
+    npm install
+   ```
+3. Run the app
+   ```sh
+    npm run android
+   ```
+4. Wait for the app to build and install on your device
+5. Enjoy!
 
 # 📸 Screenshots
 
 ## Date Selection
+
 ![screen1](https://github.com/MohamedKamalOthman/train-booking-react-native/assets/76039756/f070fa74-04db-44eb-b169-1c7ea6ce0f02)
 
+## Train Selection
 
-## Train Selection 
 ![selectTrain](https://github.com/MohamedKamalOthman/train-booking-react-native/assets/76039756/ccef0db9-a1e8-46f0-b8c1-fa69048c0380)
 
-
 ## Seat Selection
-![selectSeats](https://github.com/MohamedKamalOthman/train-booking-react-native/assets/76039756/de74417d-5d7d-4435-be4c-7324de157304)
 
+![selectSeats](https://github.com/MohamedKamalOthman/train-booking-react-native/assets/76039756/de74417d-5d7d-4435-be4c-7324de157304)
 
 ## Personal Details
 
@@ -25,6 +43,4 @@ This is a UI clone of SAR app using react native.
 
 # 📹 Videos
 
-
 https://github.com/MohamedKamalOthman/train-booking-react-native/assets/76039756/069df61a-7654-4e76-a9d7-7187f0f197d4
-
