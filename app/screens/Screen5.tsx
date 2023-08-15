@@ -1,4 +1,9 @@
 // قطار الذهاب
+import {
+  faArrowRightArrowLeft,
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 
 import {
@@ -12,8 +17,50 @@ import {
 
 export const Screen5 = () => {
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={styles.whiteBackground}>
       <View style={styles.container}>
+        <View style={styles.firstContainer}>
+          <View>
+            <View style={styles.innerContainer}>
+              <Text style={[styles.textAlign, styles.textGrey]}>
+                {'3 مسافرين'}
+              </Text>
+              <FontAwesomeIcon icon={faUsers} size={22} color="grey" />
+            </View>
+            <Text style={styles.textDark}>{'420 ر.س'}</Text>
+            <Text style={[styles.textAlign, styles.textGrey]}>
+              {'السعر الكلي'}
+            </Text>
+          </View>
+          <View style={styles.container2}>
+            <View>
+              <Text style={[styles.textAlign, styles.textDark]}>{'DMM'}</Text>
+              <Text style={[styles.textAlign, styles.textGrey]}>
+                {'العودة'}
+              </Text>
+              <Text style={[styles.textAlign, styles.textGrey]}>
+                {new Date().toLocaleDateString('en')}
+              </Text>
+            </View>
+            <View style={styles.spacer}>
+              <FontAwesomeIcon
+                icon={faArrowRightArrowLeft}
+                size={22}
+                color="grey"
+              />
+            </View>
+            <View>
+              <Text style={[styles.textAlign, styles.textDark]}>{'RYD'}</Text>
+              <Text style={[styles.textAlign, styles.textGrey]}>
+                {'الذهاب'}
+              </Text>
+              <Text style={[styles.textAlign, styles.textGrey]}>
+                {new Date().toLocaleDateString('en')}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.line} />
         <View style={styles.flexRow}>
           <TouchableOpacity style={styles.card}>
             <Image
@@ -51,6 +98,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
   card: {
     marginTop: 20,
     width: '40%',
@@ -76,5 +126,35 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 50,
     resizeMode: 'contain',
+  },
+  line: {
+    borderBottomWidth: 0.7,
+    width: '90%',
+    height: 10,
+    borderColor: 'grey',
+  },
+  firstContainer: {
+    width: '90%',
+    padding: 10,
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textAlign: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+  textGrey: {
+    color: 'grey',
+    fontSize: 12,
+  },
+  textDark: {fontSize: 22, fontWeight: 'bold', color: '#00798c'},
+  innerContainer: {flexDirection: 'row', justifyContent: 'space-around'},
+  spacer: {marginHorizontal: 5},
+  container2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
